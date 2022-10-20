@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vitest run --environment jsdom",
+    "test:unit:update": "vitest run --environment jsdom -u",
     "postinstall": "npm run build",
     "start": "node server.js"
   },
@@ -26,11 +27,11 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^2.1.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint": "^8.25.0",
+    "eslint-plugin-vue": "^9.6.0",
+    "jsdom": "^20.0.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
-    "jsdom": "^20.0.1",
     "vitest": "^0.24.3"
   },
   "eslintConfig": {
