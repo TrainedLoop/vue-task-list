@@ -1,0 +1,28 @@
+// Vitest Snapshot v1
+
+exports[`GenericInput.vue Tests > renders component correctly 1`] = `
+<div
+  class="input input--empty"
+  data-v-e2f048a6=""
+>
+  <input
+    aria-labelledby="placeholder-Input Name"
+    autocomplete="off"
+    data-v-e2f048a6=""
+    id="Input Name"
+    name="Input Name"
+  />
+  <label
+    data-v-e2f048a6=""
+    for="Input Name"
+    id="placeholder-Input Name"
+  >
+    <span
+      class="label-text"
+      data-v-e2f048a6=""
+    >
+      Input Name
+    </span>
+  </label>
+</div>
+`;

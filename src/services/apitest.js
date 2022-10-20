@@ -7,5 +7,6 @@ export const testApi = async () => {
   } catch (error) {
     console.log(error)
     alert(error)
+    return "error"
   }
 };

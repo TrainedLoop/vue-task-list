@@ -1,31 +1,46 @@
 <script setup>
-import { defineProps, toRefs, defineEmits } from 'vue'
+import { ref, toRefs, watch } from 'vue';
 const props = defineProps({
-    modelValue: String,
+    modelValue: {
+        type: String,
+        default: "",
+    },
     name: {
         type: String,
-        required: true
-    }
-})
+        required: true,
+    },
+});
 
-let { modelValue, name } = toRefs(props)
-console.log(modelValue)
-const emit = defineEmits(['update:modelValue'])
-function updateValue(event) {
-    emit('update:modelValue', event.target.value)
+let { modelValue, name } = toRefs(props);
+let styleClasses = ref(['input'])
+if (modelValue.value === "") {
+    styleClasses.value.push('input--empty')
 }
+const emit = defineEmits(['update:modelValue']);
 
+watch(modelValue, () => {
+    console.log('=============watch==========')
+    if (modelValue.value === "") {
+        styleClasses.value.push("input--empty")
+    }
+    else {
+        styleClasses.value = styleClasses.value.filter(i => i !== 'input--empty')
+    }
+}, { deep: true })
 
+function updateValue(event) {
+    const { value } = event.target
+    emit('update:modelValue', value);
+}
 </script>
 
 <template>
-    <div class="input">
-        <input v-bind="$attrs" :id="name" :name="name" autocomplete="off" :value="modelValue"
-            :aria-labelledby="`placeholder-${name}`" @input="updateValue">
-        <label class="input__placeholder-text" :for="name" :id="`placeholder-${name}`">
-            <div class="text">{{name}}</div>
+    <div v-bind:class="styleClasses">
+        <input v-bind="$attrs" :id=" name" :name="name" autocomplete="off" :value=modelValue
+            :aria-labelledby="`placeholder-${name}`" @input="updateValue" />
+        <label :for="name" :id="`placeholder-${name}`">
+            <span class="label-text">{{ name }}</span>
         </label>
-
     </div>
 </template>
 
@@ -33,7 +48,6 @@ function updateValue(event) {
 .input {
     display: flex;
     flex-direction: column;
-    max-width: 70vw;
     position: relative;
 
     & input {
@@ -41,13 +55,11 @@ function updateValue(event) {
         font-size: 1rem;
         border: none;
         border-bottom: 1px solid;
-        background-color: lightgrey;
-        transition: background-color .3s ease;
+        transition: background-color 0.3s ease;
 
         &:focus {
             outline: none;
             background-color: transparent;
-            transition: background-color .3s ease;
         }
 
     }
@@ -55,6 +67,7 @@ function updateValue(event) {
 
     & label {
         position: absolute;
+        height: 2rem;
         top: 0;
         bottom: 0;
         left: 0;
@@ -64,19 +77,29 @@ function updateValue(event) {
         pointer-events: none;
         display: flex;
         align-items: center;
-        transform: translate(0);
-        transition: transform .3s ease;
-        ;
+        transition: transform 0.3s ease;
+
+        .label-text {
+            transition: transform .3s ease;
+            transform: translate(0, -100%);
+        }
 
     }
 
-    & input:focus+label
-    & input:not([value='']):not(:focus)+label {
-        font-size: 0.8rem;
-        color: black;
-        transform: translate(0, -50%);
-        transition: transform .3s ease;
-        ;
+    &--empty {
+        & label .label-text {
+            transition: transform .3s ease;
+            transform: translate(0);
+        }
+
+        input {
+            &:focus+label .label-text {
+                transition: transform .3s ease;
+                transform: translate(0, -100%);
+            }
+
+        }
     }
+
 }
 </style>

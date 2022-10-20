@@ -1,28 +1,18 @@
 <template>
   <p>{{apiResponse}}</p>
-  <Input name="test"/>
+  <GenericInput name="test" v-model="apiResponse" />
 </template>
 
-<script>
-import { testApi } from '@/services/apitest'
-import Input from '@/components/GenericInput.vue'
-export default {
-  data() {
-    return {
-      apiResponse: "sem resposta"
-    }
-  },
-  methods: {
-    async getApiTest() {
-      const response = await testApi()
-      this.apiResponse = response.teste
-    }
-  },
-  components: {
-    Input
-  },
-  mounted() {
-    this.getApiTest()
-  },
-}
+<script setup>
+// import { testApi } from '@/services/apitest'
+import GenericInput from '@/components/GenericInput.vue'
+import {  ref ,watch} from 'vue';
+
+let apiResponse = ref('')
+
+watch(apiResponse, () => {
+    console.log('=============apiResponse==========')
+    
+})
+
 </script>
