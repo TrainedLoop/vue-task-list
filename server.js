@@ -16,10 +16,10 @@ app.use(
 app.use(staticFileMiddleware);
 
 app.get('/', function (req, res) {
-  res.render("<p>Oi</p>");
+  res.render(path.join(__dirname + '/dist/index.html'));
 });
 
-var server = app.listen(process.env.PORT || 80, function () {
-  var port = server.address().port;
+const server = app.listen(process.env.PORT || 80, function () {
+  const port = server.address().port;
   console.log('App now running on port', port);
 });
