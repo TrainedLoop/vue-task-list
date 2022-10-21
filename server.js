@@ -16,7 +16,7 @@ app.use(
 app.use(staticFileMiddleware);
 
 app.get('/', function (req, res) {
-  res.render(path.join(__dirname + '/dist/index.html'));
+  res.render("<p>Oi</p>");
 });
 
 var server = app.listen(process.env.PORT || 80, function () {
