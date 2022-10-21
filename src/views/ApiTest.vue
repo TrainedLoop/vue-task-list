@@ -1,18 +1,17 @@
 <template>
-  <p>{{apiResponse}}</p>
-  <GenericInput name="test" v-model="apiResponse" />
+  <div>
+    <p>{{ apiResponse }}</p>
+    <GenericInput v-model="apiResponse" name="test" />
+  </div>
 </template>
 
-<script setup>
-// import { testApi } from '@/services/apitest'
-import GenericInput from '@/components/GenericInput.vue'
-import {  ref ,watch} from 'vue';
+<script setup lang="ts">
+import GenericInput from "@/components/GenericInput.vue";
+import { ref, watch } from "vue";
 
-let apiResponse = ref('')
+const apiResponse = ref("");
 
 watch(apiResponse, () => {
-    console.log('=============apiResponse==========')
-    
-})
-
+  console.log("=============apiResponse==========");
+});
 </script>

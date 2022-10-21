@@ -1,5 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { shallowMount, flushPromises, mount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import GenericInput from '../GenericInput.vue';
 
 //https://testdriven.io/blog/vue-unit-testing/
@@ -38,11 +37,11 @@ describe('GenericInput.vue Tests', () => {
     });
 
     it('should change empty class if not empty', async () => {
-      props.modelValue= '',
-      wrapper = shallowMount(GenericInput, {
-        propsData: props,
-        sync:false
-      });
+      (props.modelValue = ''),
+        (wrapper = shallowMount(GenericInput, {
+          propsData: props,
+          sync: false,
+        }));
       expect(wrapper.classes()).toContain('input--empty');
       await wrapper.setProps({
         modelValue: 'text-value',
