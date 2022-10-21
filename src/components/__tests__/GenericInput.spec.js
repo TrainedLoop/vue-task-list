@@ -37,23 +37,16 @@ describe('GenericInput.vue Tests', () => {
       );
     });
 
-    it.only('should change empty class', async () => {
+    it('should change empty class if not empty', async () => {
+      props.modelValue= '',
       wrapper = shallowMount(GenericInput, {
         propsData: props,
+        sync:false
       });
       expect(wrapper.classes()).toContain('input--empty');
-      await wrapper.find('input').setValue('text-value');
-      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
-      expect(wrapper.emitted('update:modelValue').at(0).at(0)).toBe(
-        'text-value'
-      );
-      //wrapper.vm.$emit('update:modelValue', 'load-data')
-      //assim chama a caralha do watch
-      wrapper.setProps({
+      await wrapper.setProps({
         modelValue: 'text-value',
       });
-      await flushPromises();
-
       expect(wrapper.classes()).not.toContain('input--empty');
     });
   });

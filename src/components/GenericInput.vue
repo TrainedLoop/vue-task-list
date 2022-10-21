@@ -1,43 +1,44 @@
-<script setup>
+<script setup lang="ts">
 import { ref, toRefs, watch } from 'vue';
-const props = defineProps({
-    modelValue: {
-        type: String,
-        default: "",
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-});
+
+interface Props {
+    modelValue?: string,
+    name: string
+}
+interface Emits {
+    (e: 'update', modelValue: string): void
+}
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
 
 let { modelValue, name } = toRefs(props);
 let styleClasses = ref(['input'])
+
 if (modelValue.value === "") {
     styleClasses.value.push('input--empty')
 }
-const emit = defineEmits(['update:modelValue']);
+
 
 watch(modelValue, () => {
-    console.log('=============watch==========')
     if (modelValue.value === "") {
         styleClasses.value.push("input--empty")
     }
     else {
         styleClasses.value = styleClasses.value.filter(i => i !== 'input--empty')
     }
-}, { deep: true })
+})
 
-function updateValue(event) {
+const inputHandler = (event: any) => {
     const { value } = event.target
-    emit('update:modelValue', value);
+    emit('update', value);
+    return event
 }
 </script>
 
 <template>
     <div v-bind:class="styleClasses">
         <input v-bind="$attrs" :id=" name" :name="name" autocomplete="off" :value=modelValue
-            :aria-labelledby="`placeholder-${name}`" @input="updateValue" />
+            :aria-labelledby="`placeholder-${name}`" @input="inputHandler" />
         <label :for="name" :id="`placeholder-${name}`">
             <span class="label-text">{{ name }}</span>
         </label>
