@@ -48,6 +48,19 @@ describe('GenericInput.vue Tests', () => {
       });
       expect(wrapper.classes()).not.toContain('input--empty');
     });
+
+    it('should change empty class if empty', async () => {
+      (props.modelValue = 'not empty'),
+        (wrapper = shallowMount(GenericInput, {
+          propsData: props,
+          sync: false,
+        }));
+      expect(wrapper.classes()).not.toContain('input--empty');
+      await wrapper.setProps({
+        modelValue: '',
+      });
+      expect(wrapper.classes()).toContain('input--empty');
+    });
   });
 
   it('renders component correctly', () => {

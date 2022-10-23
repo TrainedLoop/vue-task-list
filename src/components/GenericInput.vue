@@ -1,3 +1,13 @@
+<template>
+  <div :class="styleClasses">
+    <input v-bind="$attrs" :id="name" :name="name" autocomplete="off" :aria-labelledby="`placeholder-${name}`"
+      :value="modelValue" @input="inputHandler" />
+    <label :id="`placeholder-${name}`" :for="name">
+      <span class="label-text">{{ name }}</span>
+    </label>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref, toRefs, watch } from "vue";
 
@@ -34,16 +44,6 @@ const inputHandler = (event: Event) => {
   return event;
 };
 </script>
-
-<template>
-  <div :class="styleClasses">
-    <input v-bind="$attrs" :id="name" :name="name" autocomplete="off" :aria-labelledby="`placeholder-${name}`"
-      :value="modelValue" @input="inputHandler" />
-    <label :id="`placeholder-${name}`" :for="name">
-      <span class="label-text">{{ name }}</span>
-    </label>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .input {
