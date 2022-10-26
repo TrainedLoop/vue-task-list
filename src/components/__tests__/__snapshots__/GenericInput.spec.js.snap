@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GenericInput.vue Tests if input receive an errorMessage renders component correctly 1`] = `
+<div
+  class="input input--empty input--error"
+>
+  <input
+    aria-labelledby="placeholder-Input Name"
+    autocomplete="off"
+    id="Input Name"
+    name="Input Name"
+  />
+  <label
+    for="Input Name"
+    id="placeholder-Input Name"
+  >
+    <span
+      class="label-text"
+    >
+      Input Name
+    </span>
+  </label>
+  <div
+    class="error"
+  >
+    <small>
+      error
+    </small>
+  </div>
+</div>
+`;
+
 exports[`GenericInput.vue Tests renders component correctly 1`] = `
 <div
   class="input input--empty"
@@ -20,5 +50,10 @@ exports[`GenericInput.vue Tests renders component correctly 1`] = `
       Input Name
     </span>
   </label>
+  <div
+    class="error"
+  >
+    <small />
+  </div>
 </div>
 `;

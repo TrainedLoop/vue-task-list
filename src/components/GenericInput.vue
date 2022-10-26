@@ -6,7 +6,7 @@
       <span class="label-text">{{ name }}</span>
     </label>
     <div class="error">
-      <small>{{ props.errorMessage }}</small>
+      <small>{{ errorMessage }}</small>
     </div>
   </div>
 </template>
@@ -27,19 +27,18 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const emit = defineEmits<Emits>();
 
-const { modelValue, name } = toRefs(props);
+const { modelValue, name, errorMessage } = toRefs(props);
 const styleClasses = ref(["input"]);
 
 
 
-watch(modelValue, () => {
-  console.log('wath')
+watch([modelValue,errorMessage], () => {
   if (modelValue.value === "") {
     styleClasses.value.push("input--empty");
   } else {
     styleClasses.value = styleClasses.value.filter((i) => i !== "input--empty");
   }
-  if (props.errorMessage !== "" && props.errorMessage !== undefined) {
+  if (errorMessage?.value !== "" && errorMessage?.value !== undefined) {
     styleClasses.value.push("input--error");
   }
   else {

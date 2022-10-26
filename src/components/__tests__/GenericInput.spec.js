@@ -19,6 +19,7 @@ describe('GenericInput.vue Tests', () => {
       propsData: props,
     });
     expect(wrapper.props()).toStrictEqual({
+      errorMessage: undefined,
       name: 'Input Name',
       modelValue: '',
     });
@@ -60,6 +61,61 @@ describe('GenericInput.vue Tests', () => {
         modelValue: '',
       });
       expect(wrapper.classes()).toContain('input--empty');
+    });
+  });
+
+  describe('if input receive an errorMessage', () => {
+    beforeEach(() => {
+      props.errorMessage = 'error';
+    });
+
+    it('component contains correct props', () => {
+      wrapper = shallowMount(GenericInput, {
+        propsData: props,
+      });
+      expect(wrapper.props()).toStrictEqual({
+        errorMessage: 'error',
+        name: 'Input Name',
+        modelValue: '',
+      });
+    });
+
+    it('should contains error class', () => {
+      wrapper = shallowMount(GenericInput, {
+        propsData: props,
+      });
+      expect(wrapper.classes()).toContain('input--error');
+    });
+
+    it('should add error class if  has error', async () => {
+      props.errorMessage = '';
+      wrapper = shallowMount(GenericInput, {
+        propsData: props,
+        sync: false,
+      });
+      expect(wrapper.classes()).not.toContain('input--error');
+      await wrapper.setProps({
+        errorMessage: 'new error',
+      });
+      expect(wrapper.classes()).toContain('input--error');
+    });
+
+    it('should remove error class if not has error', async () => {
+      wrapper = shallowMount(GenericInput, {
+        propsData: props,
+        sync: false,
+      });
+      expect(wrapper.classes()).toContain('input--error');
+      await wrapper.setProps({
+        errorMessage: '',
+      });
+      expect(wrapper.classes()).not.toContain('input--error');
+    });
+    it('renders component correctly', () => {
+      wrapper = shallowMount(GenericInput, {
+        propsData: props,
+      });
+      expect(wrapper.element).toMatchSnapshot();
     });
   });
 
