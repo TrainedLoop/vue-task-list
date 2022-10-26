@@ -34,18 +34,14 @@ switch (props.type) {
 
 
 <style lang="scss" scoped>
-//https://coolors.co/35524a-627c85-779cab-a2e8dd-32de8a
-$successColor : #32DE8A;
-$defaultColor : #779CAB;
-
 .generic-button {
     margin-top: 20px;
 
     & button {
         outline: none;
-        background-color: $defaultColor;
+        background-color: $default-color-1;
+        color: $text-color-light;
         height: 2.5rem;
-        color: white;
         font-size: 1rem;
         border: none;
         box-shadow: inset 1px 2px 5px 2px rgba(0, 0, 0, 0),
@@ -70,10 +66,10 @@ $defaultColor : #779CAB;
         }
 
     }
-
     &--success {
         & button {
-            background-color: $successColor;
+            background-color: $light-color-2;
+            color: $text-color-light;
         }
     }
 }

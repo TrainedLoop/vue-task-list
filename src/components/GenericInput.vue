@@ -5,6 +5,9 @@
     <label :id="`placeholder-${name}`" :for="name">
       <span class="label-text">{{ name }}</span>
     </label>
+    <div class="error">
+      <small>{{ props.errorMessage }}</small>
+    </div>
   </div>
 </template>
 
@@ -14,6 +17,7 @@ import { ref, toRefs, watch } from "vue";
 interface Props {
   modelValue?: string;
   name: string;
+  errorMessage?: string;
 }
 interface Emits {
   (e: "update:modelValue", value: string): void;
@@ -26,17 +30,22 @@ const emit = defineEmits<Emits>();
 const { modelValue, name } = toRefs(props);
 const styleClasses = ref(["input"]);
 
-if (modelValue.value === "") {
-  styleClasses.value.push("input--empty");
-}
+
 
 watch(modelValue, () => {
+  console.log('wath')
   if (modelValue.value === "") {
     styleClasses.value.push("input--empty");
   } else {
     styleClasses.value = styleClasses.value.filter((i) => i !== "input--empty");
   }
-});
+  if (props.errorMessage !== "" && props.errorMessage !== undefined) {
+    styleClasses.value.push("input--error");
+  }
+  else {
+    styleClasses.value = styleClasses.value.filter((i) => i !== "input--error");
+  }
+}, { immediate: true });
 
 const inputHandler = (event: Event) => {
   const { value } = event.target as HTMLInputElement;
@@ -52,11 +61,15 @@ const inputHandler = (event: Event) => {
   position: relative;
 
   & input {
-    height: 2rem;
+    height: 1rem;
+    background-color: transparent;
+    padding-left: 4px;
     font-size: 1rem;
     border: none;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid $default-color-1;
     transition: background-color 0.3s ease;
+    color: $text-color-dark;
+    color: $text-color-light;
 
     &:focus {
       outline: none;
@@ -67,7 +80,7 @@ const inputHandler = (event: Event) => {
   & label {
     position: absolute;
     height: 2rem;
-    top: 0;
+    top: -.8rem;
     bottom: 0;
     left: 0;
     right: 0;
@@ -79,8 +92,25 @@ const inputHandler = (event: Event) => {
     transition: transform 0.3s ease;
 
     .label-text {
+      color: $text-color-light;
       transition: transform 0.3s ease;
       transform: translate(0, -100%);
+    }
+  }
+
+  .error {
+    color: $errorColor;
+    padding-left: 5px;
+    font-weight: bolder;
+    visibility: hidden;
+    opacity: 0.0;
+    text-align: left;
+  }
+
+  &--error {
+    .error {
+      visibility: visible;
+      opacity: 1.0;
     }
   }
 
