@@ -58,6 +58,8 @@ const inputHandler = (event: Event) => {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 1rem 0;
+
 
   & input {
     height: 3rem;
@@ -68,7 +70,8 @@ const inputHandler = (event: Event) => {
     transition: background-color 0.3s ease;
     color: $color-primary;
     border: none;
-    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: $shadow;
+    border: 1px solid rgba($color: $color-neutral-dark-1, $alpha: .1);
 
     &:focus {
       outline: none;

@@ -37,6 +37,7 @@ switch (props.type) {
 .generic-button {
     margin-top: 20px;
 
+
     & button {
         outline: none;
         background-color: $color-neutral-dark-1;
@@ -50,19 +51,21 @@ switch (props.type) {
         text-transform: uppercase;
         transition: all .3s ease;
         transform: scale(1);
-
-        &:active {
-            box-shadow: $shadow-inset;
-            transition: box-shadow transform .1s ease;
-        }
+        cursor: pointer;
 
         &:hover {
             transform: scale(1.01);
             transition: box-shadow transform .3s ease;
 
         }
+        &:active {
+            box-shadow: $shadow-inset;
+            transition: box-shadow transform .1s ease;
+            transform: scale(.99);
+        }
 
     }
+
     &--success {
         & button {
             background-color: $color-primary;
