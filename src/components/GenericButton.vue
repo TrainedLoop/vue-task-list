@@ -39,28 +39,25 @@ switch (props.type) {
 
     & button {
         outline: none;
-        background-color: $color-primary;
-        color: $color-neutral-light-1;
-        height: 2.5rem;
+        background-color: $color-neutral-dark-1;
+        color: $color-neutral-light-2;
+        height: 3rem;
         font-size: 1rem;
+        font-weight: 600;
         border: none;
-        box-shadow: inset 1px 2px 5px 2px rgba(0, 0, 0, 0),
-            1px 2px 5px 2px rgba(0, 0, 0, 0.15);
-        border-radius: 0.3rem;
+        border-radius: 1rem;
         width: 100%;
         text-transform: uppercase;
-        font-weight: bolder;
         transition: all .3s ease;
         transform: scale(1);
 
         &:active {
-            box-shadow: inset 1px 2px 5px 2px rgba(0, 0, 0, 0.1),
-                1px 2px 5px 2px rgba(0, 0, 0, 0);
+            box-shadow: $shadow-inset;
             transition: box-shadow transform .1s ease;
         }
 
         &:hover {
-            transform: scale(1.002);
+            transform: scale(1.01);
             transition: box-shadow transform .3s ease;
 
         }
@@ -68,7 +65,7 @@ switch (props.type) {
     }
     &--success {
         & button {
-            background-color: $color-success;
+            background-color: $color-primary;
             color: $color-neutral-light-1;
         }
     }

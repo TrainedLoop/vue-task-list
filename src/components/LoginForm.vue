@@ -8,6 +8,7 @@
             <GenericInput name="Senha" type="password" errorMessage="erro mimiim" v-model="password" />
         </div>
         <GenericButton class="submit-login" text="Entrar" type="success" :onClick="handleSignClick" />
+        <GenericButton class="register" text="Cadastrar" type="default" :onClick="handleRegisterClick" />
     </div>
 </template>
 <script setup lang="ts">
@@ -20,6 +21,9 @@ const password = ref("")
 
 const handleSignClick = () => {
     console.log("entrar", login.value, password.value)
+}
+const handleRegisterClick = () => {
+    console.log("cadastar")
 }
 </script>
 

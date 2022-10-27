@@ -11,7 +11,9 @@ $color-neutral-light-2: #ffffff;
 $color-error: #ff6a5d;
 $color-success: #47c272;
 
+
 $shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+$shadow-inset: inset 0px 1px 8px rgba(0, 0, 0, 0.08);
 
 html {
   background-color: $color-neutral-light-1;
