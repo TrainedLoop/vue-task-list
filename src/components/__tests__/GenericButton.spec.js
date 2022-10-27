@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import GenericButton from '../GenericButton.vue';
 
 //https://testdriven.io/blog/vue-unit-testing/

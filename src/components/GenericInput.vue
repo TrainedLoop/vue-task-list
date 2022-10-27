@@ -32,7 +32,7 @@ const styleClasses = ref(["input"]);
 
 
 
-watch([modelValue,errorMessage], () => {
+watch([modelValue, errorMessage], () => {
   if (modelValue.value === "") {
     styleClasses.value.push("input--empty");
   } else {
@@ -60,71 +60,92 @@ const inputHandler = (event: Event) => {
   position: relative;
 
   & input {
-    height: 1rem;
-    background-color: transparent;
-    padding-left: 4px;
+    height: 3rem;
+    background-color: $color-neutral-light-2;
+    padding-left: 1.5rem;
     font-size: 1rem;
-    border: none;
-    border-bottom: 1px solid $default-color-1;
+    border-radius: 16px;
     transition: background-color 0.3s ease;
-    color: $text-color-dark;
-    color: $text-color-light;
+    color: $color-primary;
+    border: none;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
 
     &:focus {
       outline: none;
       background-color: transparent;
+      border: 1px solid $color-primary;
     }
   }
 
   & label {
     position: absolute;
-    height: 2rem;
-    top: -.8rem;
+    top: 1rem;
+    height: 1rem;
     bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 3px;
-    background-color: transparent;
+    left: 1rem;
     pointer-events: none;
-    display: flex;
-    align-items: center;
     transition: transform 0.3s ease;
+    text-align: left;
+    transform: translate(0, -150%);
+    color: $color-primary;
 
     .label-text {
-      color: $text-color-light;
+      padding: 0 4px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      background-color: $color-neutral-light-2;
       transition: transform 0.3s ease;
-      transform: translate(0, -100%);
     }
   }
 
   .error {
-    color: $errorColor;
-    padding-left: 5px;
+    color: $color-error;
+    margin-left: 1rem;
     font-weight: bolder;
     visibility: hidden;
     opacity: 0.0;
     text-align: left;
   }
 
+
+  &--empty {
+    & label {
+      transition: transform 0.3s ease;
+      transform: translate(0);
+    }
+
+    input {
+      &:focus+label {
+        transition: transform 0.3s ease;
+        transform: translate(0, -150%);
+      }
+    }
+  }
+
   &--error {
+    & input {
+      border: 1px solid $color-error;
+      transition: border-color 0.3s ease;
+      color: $color-error;
+      &:focus {
+        border: 1px solid $color-error;
+      }
+    }
+
+    & label {
+      .label-text {
+        color: $color-error;
+        transition: color 0.3s ease;
+
+      }
+    }
+
     .error {
       visibility: visible;
       opacity: 1.0;
     }
   }
 
-  &--empty {
-    & label .label-text {
-      transition: transform 0.3s ease;
-      transform: translate(0);
-    }
 
-    input {
-      &:focus+label .label-text {
-        transition: transform 0.3s ease;
-        transform: translate(0, -100%);
-      }
-    }
-  }
 }
 </style>

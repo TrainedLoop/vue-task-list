@@ -39,8 +39,8 @@ switch (props.type) {
 
     & button {
         outline: none;
-        background-color: $default-color-1;
-        color: $text-color-light;
+        background-color: $color-primary;
+        color: $color-neutral-light-1;
         height: 2.5rem;
         font-size: 1rem;
         border: none;
@@ -68,8 +68,8 @@ switch (props.type) {
     }
     &--success {
         & button {
-            background-color: $light-color-2;
-            color: $text-color-light;
+            background-color: $color-success;
+            color: $color-neutral-light-1;
         }
     }
 }

@@ -1,23 +1,19 @@
 @import '~normalize.css';
+//https://www.figma.com/file/fYInwlM2sNpSZW795cOZMb/Tasker-%E2%80%93-Task-Management-Apps-UI-Kits-(Community)?node-id=175%3A33
+$color-primary: #643fdb;
+$color-ascent: #ff8a00;
 
-$dark-color-1: #54478C;
-$dark-color-2: #0DB39E;
-$dark-color-3: #F29E4C;
+$color-neutral-dark-1: #1c1243;
+$color-neutral-dark-2: #a29eb6;
+$color-neutral-light-1: #eff1f3;
+$color-neutral-light-2: #ffffff;
 
-$default-color-1: #2C699A;
-$default-color-2: #0DB39E;
-$default-color-3: #B9E769;
+$color-error: #ff6a5d;
+$color-success: #47c272;
 
-$light-color-1: #048BA8;
-$light-color-2: #83E377;
-$light-color-3: #EFEA5A;
-
-$text-color-dark:#2c2c2c;
-$text-color-light:#f1f1f1;
-
-$errorColor: #e63946;
-
+$shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
 
 html {
-  background-color: $dark-color-1;
+  background-color: $color-neutral-light-1;
+  font-size: 16px;
 }

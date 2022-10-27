@@ -4,10 +4,10 @@
             <h1>Task List App</h1>
         </div>
         <div class="input-group">
-            <GenericInput name="Login" errorMessage="erro mimiim" v-model="login" />
-            <GenericInput name="Senha" v-model="password" />
+            <GenericInput name="Login" v-model="login" />
+            <GenericInput name="Senha" type="password" errorMessage="erro mimiim" v-model="password" />
         </div>
-        <GenericButton text="Entrar" type="success" :onClick="handleSignClick" />
+        <GenericButton class="submit-login" text="Entrar" type="success" :onClick="handleSignClick" />
     </div>
 </template>
 <script setup lang="ts">
@@ -26,20 +26,27 @@ const handleSignClick = () => {
 <style lang="scss" scoped>
 .login-form {
     display: flex;
-    padding: 10px;
     width: 400px;
-    background-color: $light-color-1;
+    border-radius: .5rem;
+    padding: 1rem;
+    box-shadow: $shadow;
+    background-color: $color-neutral-light-2;
     flex-direction: column;
     justify-content: space-evenly;
 
-    .login-title{
+    .login-title {
         display: flex;
         justify-content: center;
-        color: $text-color-dark;
+        color: $color-neutral-dark-1;
     }
 
     .input:first-child {
         margin-bottom: 2rem;
+    }
+
+    .submit-login {
+        margin-top: 2rem;
+
     }
 }
 </style>
