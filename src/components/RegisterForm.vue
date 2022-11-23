@@ -3,14 +3,14 @@
 <template>
     <GenericCard>
         <div class="register-form">
-            <div class="form-inputs">
+            <form class="form-inputs">
                 <GenericInput name="Nome" v-model="name" />
                 <GenericInput name="Email" type="email" v-model="email" />
                 <GenericInput name="Usuário" v-model="username" />
                 <GenericInput name="Senha" type="password" v-model="password" />
                 <GenericInput name="Confirme a senha" type="password" errorMessage="erro mimiim"
                     v-model="passwordConfirm" />
-            </div>
+            </form>
             <GenericButton class="submit-register" text="Cadastrar" type="success" :onClick="handleRegisterClick" />
         </div>
     </GenericCard>
@@ -21,6 +21,7 @@ import { ref } from 'vue';
 import GenericInput from './GenericInput.vue';
 import GenericButton from './GenericButton.vue';
 import GenericCard from './GenericCard.vue';
+import router from '@/router';
 
 const username = ref("");
 const email = ref("");
@@ -29,6 +30,7 @@ const passwordConfirm = ref("");
 const name = ref("");
 
 const handleRegisterClick = () => {
+    router.push("/login")
     console.log("entrar", username.value, password.value, email.value, name.value)
 }
 </script>

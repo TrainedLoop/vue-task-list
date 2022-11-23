@@ -1,16 +1,16 @@
 <template>
     <GenericCard>
-        <div class="login-form">
+        <form class="login-form">
             <div class="login-title">
                 <h1>Task List App</h1>
             </div>
             <div class="input-group">
                 <GenericInput name="Login" v-model="login" />
-                <GenericInput name="Senha" type="password" errorMessage="erro mimiim" v-model="password" />
+                <GenericInput name="Senha" type="password"  v-model="password" />
             </div>
             <GenericButton class="submit-login" text="Entrar" type="success" :onClick="handleSignClick" />
             <GenericButton class="register" text="Cadastrar" type="default" :onClick="handleRegisterClick" />
-        </div>
+        </form>
     </GenericCard>
 </template>
 <script setup lang="ts">
@@ -18,6 +18,7 @@ import { ref } from 'vue';
 import GenericButton from './GenericButton.vue';
 import GenericInput from './GenericInput.vue';
 import GenericCard from './GenericCard.vue';
+import router from '@/router';
 
 const login = ref("")
 const password = ref("")
@@ -26,7 +27,8 @@ const handleSignClick = () => {
     console.log("entrar", login.value, password.value)
 }
 const handleRegisterClick = () => {
-    console.log("cadastar")
+
+    router.push('/register')
 }
 </script>
 
