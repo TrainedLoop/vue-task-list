@@ -1,3 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginForm.vue Tests renders component correctly 1`] = `<generic-card-stub />`;
+exports[`LoginForm.vue Tests should renders component correctly 1`] = `
+<div
+  class="card"
+>
+  
+  <form
+    class="login-form"
+  >
+    <div
+      class="login-title"
+    >
+      <h1>
+        Task List App
+      </h1>
+    </div>
+    <div
+      class="input-group"
+    >
+      <div
+        class="input input--empty"
+      >
+        <input
+          aria-labelledby="placeholder-Login"
+          autocomplete="off"
+          id="Login"
+          name="Login"
+        />
+        <label
+          for="Login"
+          id="placeholder-Login"
+        >
+          <span
+            class="label-text"
+          >
+            Login
+          </span>
+        </label>
+        <div
+          class="error"
+        >
+          <small />
+        </div>
+      </div>
+      <div
+        class="input input--empty"
+        type="password"
+      >
+        <input
+          aria-labelledby="placeholder-Senha"
+          autocomplete="off"
+          id="Senha"
+          name="Senha"
+          type="password"
+        />
+        <label
+          for="Senha"
+          id="placeholder-Senha"
+        >
+          <span
+            class="label-text"
+          >
+            Senha
+          </span>
+        </label>
+        <div
+          class="error"
+        >
+          <small />
+        </div>
+      </div>
+    </div>
+    <div
+      class="generic-button generic-button--success submit-login"
+    >
+      <button
+        class="submit-login"
+        type="button"
+      >
+        Entrar
+      </button>
+    </div>
+    <div
+      class="generic-button register"
+    >
+      <button
+        class="register"
+        type="button"
+      >
+        Cadastrar
+      </button>
+    </div>
+  </form>
+  
+</div>
+`;
