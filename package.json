@@ -14,18 +14,18 @@
   },
   "dependencies": {
     "connect-history-api-fallback": "^2.0.0",
-    "core-js": "^3.8.3",
+    "core-js": "^3.26.1",
     "express": "^4.18.2",
     "normalize.css": "^8.0.1",
-    "pinia": "^2.0.26",
-    "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "pinia": "^2.0.27",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@pinia/testing": "^0.0.14",
     "@types/jest": "^27.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
@@ -33,7 +33,7 @@
     "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-typescript": "^9.1.0",
-    "@vue/test-utils": "^2.0.0-0",
+    "@vue/test-utils": "^2.2.4",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
@@ -42,8 +42,8 @@
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.0.5",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.4.1",
-    "sass": "^1.32.7",
+    "prettier": "^2.8.0",
+    "sass": "^1.56.1",
     "sass-loader": "^12.0.0",
     "ts-jest": "^27.0.4",
     "typescript": "~4.5.5"
@@ -55,14 +55,13 @@
       "vue/setup-compiler-macros": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/strongly-recommended",
       "eslint:recommended",
       "@vue/typescript/recommended"
     ],
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {},
     "overrides": [
       {
         "files": [

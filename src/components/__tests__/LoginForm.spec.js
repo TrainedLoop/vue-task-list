@@ -118,6 +118,30 @@ describe('LoginForm.vue Tests', () => {
         expect(store.authUser).not.toBeCalled();
       });
     });
+    describe('if login input receive a text', () => {
+      beforeEach(()=>{
+        const input = wrapper.findAllComponents({ name: 'GenericInput' }).at(0);
+        input.setValue("login-test")
+      })
+
+      it('should call authUser from store with correct params', async () => {
+        const button = wrapper.findAllComponents({ name: 'GenericButton' }).at(0);
+        await button.props().onClick();
+        expect(store.authUser).toBeCalledWith({ login: 'login-test', password: '' });
+      });
+    });
+    describe('if password input receive a text', () => {
+      beforeEach(()=>{
+        const input = wrapper.findAllComponents({ name: 'GenericInput' }).at(1);
+        input.setValue("password-test")
+      })
+      
+      it('should call authUser from store with correct params', async () => {
+        const button = wrapper.findAllComponents({ name: 'GenericButton' }).at(0);
+        await button.props().onClick();
+        expect(store.authUser).toBeCalledWith({ login: '', password: 'password-test' });
+      });
+    })
   });
 
   it('should second button has correct props', () => {
